@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2025 at 09:34 AM
+-- Generation Time: Mar 05, 2025 at 11:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,8 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `task_id` int(11) DEFAULT NULL,
-  `comment` text NOT NULL
+  `comment` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `task_id`, `comment`, `date`) VALUES
+(3, 49, 'this nigga dumb asf', '2025-03-05'),
+(4, 49, 'this nigga dumb asf', '2025-03-05');
 
 -- --------------------------------------------------------
 
@@ -42,16 +51,17 @@ CREATE TABLE `comments` (
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
   `task` text NOT NULL,
-  `isComplete` tinyint(1) NOT NULL
+  `status` enum('PENDING','IN_PROGRESS','DONE') NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `task`, `isComplete`) VALUES
-(20, 'aaa', 0),
-(21, 'do something', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`, `date`) VALUES
+(48, 'test 2', 'IN_PROGRESS', '2025-03-05'),
+(49, 'test 1', 'DONE', '2025-03-05');
 
 --
 -- Indexes for dumped tables
@@ -78,13 +88,13 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
